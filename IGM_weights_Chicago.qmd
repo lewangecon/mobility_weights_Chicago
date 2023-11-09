@@ -1,0 +1,733 @@
+---
+title: "Generalized Intergenerational Mobility Regression"
+author: "Le Wang"
+institute: Virginia Tech
+#date: Nov 17, 2023
+title-slide-attributes:
+  data-background-color: rgb(134,31,65)
+format: 
+  revealjs:
+    html-math-method: mathjax
+    template-partials:
+      - title-slide.html    
+    theme: metropolis.scss
+    toc: true
+    toc-depth: 1
+    toc-title: "Road Map"	
+    transition: fade
+    slide-number: true
+    chalkboard: true    
+    logo: logo.png
+    preview-links: auto
+  pdf: 
+    default
+editor: visual
+#filters:
+#  - reveal-auto-agenda
+---
+
+# Part 0: Background
+
+
+## Background and Motivation
+
+[**Measurements of [Narrow]{.red} IGM**]{.blue}: 
+
+- **Narrow**: [**Correlations**]{.blue} between child income and parental income.
+
+    1. log-log regression
+    2. Rank-rank regression
+
+
+---
+
+![](figures/model1.png){fig-align="center"}
+
+---
+
+## Background and Motivation
+
+### [Narrow]{.red} measurement of [Narrow]{.red} Concept
+
+[Empirical Facts]{.blue}: Strong dependence or correlation are regarded as indicating immobility,
+
+1. In the U.S., estimates range from 0.2 (Behrman and Taubman, 1985) to 0.6 (Mazumder, 2005) to .34 Chetty et al. (2014)
+2. In China, Fan et al. (2021)  0.390 for the 1970- 1980 birth cohort (pre-reform cohort) to 0.442 for the 1981-1988 birth cohort (post-reform cohort).
+
+Mazumder (2018) surveying the field:
+
+>Where exactly the United States and other countries lie on this spectrum has been a central question in
+the intergenerational income mobility literature."
+
+---
+
+## Interpretation in a Context
+
+Other than intergenerational mobility elasticities (and mixing time concepts), it is not always straightforward nor intuitive to interpret the correlations estimates without a particular context.
+
+### [Singular estimate of IGM is useless]{.red}
+
+1. [One group]{.blue} In the U.S., estimates range from 
+
+    - .34 Chetty et al. (2014): rank-rank regression
+    - .6 (Mazumder, 2005): log-log regression
+  
+::: {.incremental}
+
+
+2. [Between Group]{.blue} A comparative (between-group) analysis of IGMs is also required for a better and deeper understanding of mobility, as well as monitoring progress in mobility and assessment of the policies ([treatment effects]{.blue}).   
+
+:::
+
+---
+
+## Results Emerging from Comparative Analysis
+
+The literature has indeed explored [between-group]{.blue} heterogeneity: influential examples:
+
+::: {.incremental}
+1. **Geography** (cross country or region)
+
+  - welfare-state economies such as Denmark and Noway have higher levels of mobility than more market-oriented economies such as the United States (e.g., Landers  and Heckman (2017), Solon (2002))
+  
+  - South is less mobile than West Chetty et al. (2014)
+  
+  - The Great Gatsby Curve Krueger (2012)
+
+::: 
+
+::: {.incremental}
+
+2. **Race**
+
+  - Blacks are less mobile than Whites Chetty et al. (2020)
+
+:::
+
+::: {.incremental}
+
+3. **Race and Geography** (Jonathan Davis and Mazumder, 2020)
+
+:::
+
+::: {.incremental}
+
+4. **Time**
+
+  - Mobility has decreased over time (Mazumder, 2019)
+  
+:::
+
+
+## Results Emerging from Comparative Analysis
+
+[Empirical Regularities]{.blue}: **The Great Gatsby Curve**
+
+::: {layout="[[2]]"}
+
+![](figures/fig-great-gatsby.png){fig-align="center"}
+:::
+
+
+## Results Emerging from Comparative Analysis
+
+
+[Davis and Mazumder (2022), The Decline in Intergenerational Mobility After 1980](https://drive.google.com/file/d/1x0RtuiPbmtuTzRrACm76dRTYslM5up1I/view?usp=sharing)
+
+> We show that the rank-rank slope rose from 0.25 to 0.36 and the intergenerational elasticity (IGE) increased from 0.28 to 0.45 . 
+
+[A statement like this is not innocuous and deceiving. In fact, they suggest a substantial difference in the dynamics. the former implies an **44** percent increase, and the latter more than **60** percent!]{.fragment}
+
+
+# Part 1: The Problem
+
+---
+
+![](figures/model1.png){fig-align="center"}
+
+## What is the problem?
+
+To challenge the usefulness and even meaning of these measures as a policy metric, and validity of comparisons between groups. 
+
+[Heterogeneity]{.blue} of families: Nonlinearity and Heterogeneous Dependence Across the distribution, as predicted by economic theories: 
+
+::: {.incremental}
+
+
+1. **Poverty Trap** Becker and Tomes (1979) and Loury (1976): highlight family income as a key constraining factor in human capital formation, which implies a strong persistence in the lower tail of the distribution and gives rise to poverty traps.
+
+:::
+
+::: {.incremental}
+
+
+2. **Nonlinear IGM** Durlauf, 1996b; Durlauf, 1996a: Focusing on provision of public goods, role model, and peer effects, social theories of intergenerational mobility mimic the Becker-Tomes environment that is highly nonlinear and can also produce poverty traps. (Durlauf et al. 2017, **Threshold effects**)
+
+:::
+
+::: {.incremental}
+
+3. **Affluence Trap**: Becker et al. (2018) by emphasizing complementarities in the production of children's human capital, show that a strong intergenerational persistence in incomes can exist, even in the absence of credit constraints, and that mobility is low in the upper part of the income distribution
+
+:::
+
+---
+
+![](figures/model2.png){fig-align="center"}
+
+
+---
+
+![](figures/model3.png){fig-align="center"}
+
+
+---
+
+![](figures/model4.png){fig-align="center"}
+
+---
+
+![](figures/model5.png){fig-align="center"}
+
+# Part 1.b Implications: [Weighting Scheme Matters!]{.white}
+
+## A Numerical Example of the Problem 
+
+**Simplistic environment:**  
+
+1. We have two groups $A$ and $B$
+
+1. Each country with two levels of incomes, Low and High incomes ($l$, $h$)
+
+
+[**Two goals:**]{.blue}
+
+1. Measuring the level of mobility for a group
+
+2. Comparing the level of mobility between two groups. 
+
+
+## A Numerical Example of the Problem 
+
+[**Question 1**]{.red}: What is the level of mobility of country $A$? 
+
+$$\begin{aligned}&Y_{A}=g_{A}(X)+\epsilon_{A} \Longrightarrow g_{A}^{\prime}(x)\end{aligned}$$
+$$\begin{array}{ll}
+g_{A}^{\prime}(l)=0.6 & g_{A}^{\prime}(h)=0.3\end{array}$$
+
+$X \in\{l, h\}$ (Low vs. High Income)
+
+
+::: {.columns align="center"}
+::: {.column  .fragment width="45%"}
+**Weighting scheme 1 ([Care about Poor]{.red})**
+
+$$\begin{array}{ll}
+w_{1}^{\prime}(l)=0.95 & w_{1}^{\prime}(h)=0.05 \\
+\end{array}$$
+
+
+:::
+::: {.column .fragment width="45%"}
+**Weighting scheme 2  ([Care about Rich]{.red})**
+
+$$\begin{array}{ll}
+w_{2}^{\prime}(l)=0.05 & w_{2}^{\prime}(h)=0.95
+\end{array}$$
+
+:::
+:::
+
+::: {.columns align="center" .fragment}
+::: {.column   width="45%"}
+
+$$\color{red}{.95}\cdot\color{blue}{.6} + \color{red}{.05}\cdot\color{blue}{.3} = .585$$
+
+
+:::
+::: {.column  width="45%"}
+$$\color{red}{.05}\cdot\color{blue}{.6} + \color{red}{.95}\cdot\color{blue}{.3} = .315$$
+
+:::
+:::
+
+[These two estimates resemble the current debate about the level of mobility in the US]{.fragment}
+
+
+
+
+## A Numerical Example of the Problem 
+
+[**Question 2**]{.red}: Which group is more mobile, group $A$ or $B$?
+
+
+::: {.columns align="center" .fragment}
+::: {.column   width="45%"}
+$$\begin{aligned}&Y_{A}=g_{A}(X)+\epsilon_{A} \Longrightarrow g_{A}^{\prime}(x)\end{aligned}$$
+$$\begin{array}{ll}
+g_{A}^{\prime}(l)=0.6 & g_{A}^{\prime}(h)=0.3\end{array}$$
+:::
+
+::: {.column   width="45%"}
+
+
+$$\begin{aligned}&Y_{B}=g_{B}(X)+\epsilon_{B} \Longrightarrow g_{B}^{\prime}(x)\end{aligned}$$
+$$\begin{array}{ll}
+g_{B}^{\prime}(l)=0.9 & g_{B}^{\prime}(h)=0.2\end{array}$$
+:::
+:::
+
+[**Weighting Scheme 1** (Care about [**poor**]{.red})]{align="center"}
+
+
+
+$$\begin{array}{ll}
+w_{1}^{\prime}(l)=0.95 & w_{1}^{\prime}(h)=0.05\end{array}$$
+
+::: {.columns align="center" .fragment}
+::: {.column   width="45%"}
+
+$$\color{red}{.95}\cdot\color{blue}{.6} + \color{red}{.05}\cdot\color{blue}{.3} = .585$$
+
+:::
+
+::: {.column   width="45%"}
+
+$$\color{red}{.95}\cdot\color{blue}{.9} + \color{red}{.05}\cdot\color{blue}{.2} = .865$$
+:::
+:::
+
+[**Weighting Scheme 2** (care about [**rich**]{.red})]{style='text-align:center;'}
+
+$$\begin{array}{ll}
+w_{2}^{\prime}(l)=0.05 & w_{2}^{\prime}(h)=0.95
+\end{array}$$
+
+
+::: {.columns align="center" .fragment}
+::: {.column   width="45%"}
+$$\color{red}{.05}\cdot\color{blue}{.6} + \color{red}{.95}\cdot\color{blue}{.3} = .315$$
+
+:::
+
+::: {.column   width="45%"}
+$$\color{red}{.05}\cdot\color{blue}{.9} + \color{red}{.95}\cdot\color{blue}{.2} = .235$$
+
+:::
+:::
+
+
+
+## Second Example: The Great Gatsby Curve
+
+
+![](figures/fig-great-gatsby.png)
+
+# Part 1.c Results: : [Nonsensical Weighting Scheme!]{.white}
+
+---
+
+![](figures/model5.png){fig-align="center"}
+
+
+## Basic Results
+
+$$
+\int w(x) g^{\prime}(x) d x
+$$
+
+
+**OLS Model:**  $w(x)=\color{red}{F_{X}(x)}\color{blue}{[\mathbb{E}(X)-\mathbb{E}(X \mid X \leq x)]}\color{green}{(\operatorname{Var}(X))^{-1}}$
+
+::: {.columns align="center" .fragment}
+::: {.column width="100%"}
+[**Conclusion:** maximized at the [sample median]{.blue}]{.fragment}
+:::
+:::
+
+
+**Rank-rank Model **  $w_{r}(x)=\frac{\color{red}{6\left(F_{X}(x)-F_{X}^{2}(x)\right)f_{X}(x)} \color{blue}{g_{r}^{\prime}\left(F_{X}(x)\right)} }{\color{green}{g^{\prime}(x)}}$
+
+
+::: {.columns align="center" .fragment}
+::: {.column width="100%"}
+**Conclusion:** 
+
+1. $w_{r}(x)$ [**is not proper weight**]{.red}. In general, $\int_{\mathcal{X}} w_{r}(x) d x \neq 1 ; \beta_{r}$ can be greater than $\max g^{\prime}(x)$ if $\int_{\mathcal{X}} w_{r}(x) d x>1$
+
+2. $N_{r}(x)$ is [**not necessarily maximized at the median**]{.red} of $X$. It depends on $g^{\prime}(\cdot), g_{r}^{\prime}(\cdot), f_{X}(\cdot)$
+:::
+:::
+
+
+# Part 2: A Solution: [Mobility Measures Based on Social Preferences]{.white}
+
+---
+
+## Our Solution {#slide-sol}
+
+### One-step approach: [Nonparametric]{.blue} + [Social Preference]{.red} (or [A less elegant solution](#slide-sen))
+
+![](figures/model5.png){fig-align="center"}
+
+## Our Approach
+
+$$
+s=\frac{\operatorname{Cov}\left(Y, P^{\prime}\left(F_X(X)\right)\right)}{\operatorname{Cov}\left(X, P^{\prime}\left(F_X(X)\right)\right)}=\frac{\operatorname{Cov}\left(Y, P^{\prime}(U)\right)}{\operatorname{Cov}\left(X, P^{\prime}(U)\right)} .
+$$
+
+::: {.columns align="center" .fragment}
+::: {.column   width="100%"}
+Yaari (1987, 1988) show that a preference relation, $P(\cdot)$, defined on income distribution, which satisfies a set of standard axioms, can be represented by the following social welfare
+
+$$
+W_X = \int x d P \left(F_X(x)\right) = \int_0^1 P^{\prime}(t) F_X^{-1}(t) dt
+$$
+
+where $F_X^{-1}(t)$ is the $t$-th quantile of the income distribution. ${ }^{13}$ Social welfare $W_X$ is taken as a weighted average of individual incomes in which the weight $P^{\prime}(\cdot)$ is a function of income ranks $t \in[0,1]$ with $P(0)=0, P(1)=1$ and $P^{\prime}(t)>0$. 
+:::
+:::
+
+## Our Approach {#slide-ours}
+
+$$
+s=\frac{\operatorname{Cov}\left(Y, P^{\prime}\left(F_X(X)\right)\right)}{\operatorname{Cov}\left(X, P^{\prime}\left(F_X(X)\right)\right)}=\frac{\operatorname{Cov}\left(Y, P^{\prime}(U)\right)}{\operatorname{Cov}\left(X, P^{\prime}(U)\right)} .
+$$
+
+::: {.columns align="center" .fragment}
+::: {.column   width="100%"}
+[Proposition 2.]{.blue}  $s=\color{red}{\widetilde{W}_Y}\color{blue}{\left(\widetilde{W}_X\right)^{-1}}$
+
+:::
+:::
+
+::: {.columns align="center" .fragment}
+::: {.column   width="100%"}
+the marginal effect of 
+
+- [parents' normalized social welfare]{.blue} $\widetilde{W}_X=$ $\int_{\mathcal{S}_X} \widetilde{x} d P\left(F_X(x)\right)$ 
+- [children's normalized social welfare]{.red} $\widetilde{W}_Y=\int_{\mathcal{S}_X} \widetilde{y}_x d P\left(F_X(x)\right)$ 
+
+
+where $\widetilde{y}_x=\mathbb{E}(Y \mid X=x)-\mathbb{E}(Y)$ and $\widetilde{x}=x-\mathbb{E}(X)$ are children's normalized conditional income and parents' normalized income, respectively.
+:::
+:::
+
+[**Proof**](#slide-proof)
+
+## Our Approach
+
+$$
+s=\frac{\operatorname{Cov}\left(Y, P^{\prime}\left(F_X(X)\right)\right)}{\operatorname{Cov}\left(X, P^{\prime}\left(F_X(X)\right)\right)}=\frac{\operatorname{Cov}\left(Y, P^{\prime}(U)\right)}{\operatorname{Cov}\left(X, P^{\prime}(U)\right)} .
+$$
+
+::: {.columns align="center" .fragment}
+::: {.column   width="100%"}
+[Proposition 2.]{.blue}  $s=\color{red}{\widetilde{W}_Y}\color{blue}{\left(\widetilde{W}_X\right)^{-1}}$ **A Society-level measure of Mobility!**
+
+:::
+:::
+
+
+
+## Economic Interpretation of Regression-based Measures
+
+[Our measure]{.blue}
+
+$$
+s=\frac{\operatorname{Cov}\left(Y, P^{\prime}\left(F_X(X)\right)\right)}{\operatorname{Cov}\left(X, P^{\prime}\left(F_X(X)\right)\right)}=\frac{\operatorname{Cov}\left(Y, P^{\prime}(U)\right)}{\operatorname{Cov}\left(X, P^{\prime}(U)\right)} .
+$$
+
+::: {.fragment}
+
+[Proposition 4]{.blue}. 
+$$\beta=\frac{\operatorname{Cov}(Y, X)}{\operatorname{Cov}(X, X)}$$
+:::
+
+::: {.fragment}
+$$
+P^{\prime}(U) = X \iff P(t)=\int_0^t F_X^{-1}(u) d u
+$$
+:::
+
+::: {.fragment}
+However, the fact that $P(t)$ is **convex** implies that the policy maker is not equality minded, and the evaluation fails to satisfy the PigouDalton principle of transfers.
+
+:::
+
+
+## Our paper
+
+We further consider the following:
+
+1. Gini Preference Function
+2. Lorenz Preference Function
+3. Analyze their properties
+4. Extension to Control for Covariates and Decomposition
+
+
+# Part 3: Data
+
+## Data Source: Panel Study of Income Dynamics (PSID); Total family income. {#slide-data}
+
+We are convinced by all the papers written by Mazumder that this is the dataset!
+
+1. The long panel structure allows us to match children to their parents for intergenerational analysis, as well as to obtain their incomes at a wide range of stages over the life-cycle for both generations.
+
+1. Include only the Survey Research Center component of the PSID, but exclude the Survey of Economic Opportunity (SEO) component to prevent over-representing the poverty sample.
+
+1. (the logarithm of) permanent incomes for both children and parents. the average of annual family incomes, which include the taxable income of all earners in the family, from all sources, and transfer payments. center the average around age 40 (between 30 and 50) choice of age 40 follows the rule of thumb in the literature that largely overcomes the life cycle bias (Haider and Solon (2006); Mazumder (2018b)).
+
+1. We exclude zero and negative incomes. [Zero Income](#slide-zeroincome)
+
+
+## PSID vs Administrative data {#slide-zeroincome}
+
+First, the family total income in the PSID includes sources of income such as transfers that are not available in the administrative tax record, and it is still reported "even when it may be too low to be filed for tax purposes" (An et al., 2020). 
+
+Second, the PSID has a better coverage of life-cycles than the administrative records. Therefore, very few instances of zero incomes exist in the PSID, and the instances of multiple years of zero incomes are even rarer. 
+
+Mazumder (2016) concludes that 
+
+> "the concerns about the sensitivity of results around how to handle years of zero income is effectively a non-issue when using family income." 
+
+[Back](#slide-data)
+
+
+# Part 4: Results
+
+
+## Results Summary
+
+1. The results are sensitive to the approaches used.
+
+2. Even the relative magnitudes. In some cases, the patterns are even reversed.
+
+3. The results are not monotonic, suggesting that the underlying process is indeed nonlinear and non-monotonic.
+
+
+---
+
+![](https://cdn.mathpix.com/snip/images/u2bTvt5txXWZV6yS4tLUGhWyVEw8q5z1f_9RYsC9c1c.original.fullsize.png)
+
+::: {.fragment}
+1. Regression suggests a less mobile society in general than rank-rank regression does.
+2. Common pattern: South is less mobile and West is more mobile
+3. Difference: North Central is less mobile (regression), while more mobile (rank-rank regression)
+:::
+
+
+---
+
+![](https://cdn.mathpix.com/snip/images/t1WrK0n_caSs3uGAFyKCgX0X4O_ZoL-vd27cnxhcWIU.original.fullsize.png)
+
+
+## Decision-theoretic Gini-based Measures
+
+1. Suggest rather nonlinear process
+
+1. Not always monotonic
+
+1. Asymmetric association across regions. (In the West, poorer individuals are less more mobile.)
+
+
+## Before Conclusions
+
+The results here, both theoretical and empirical, may be uncomfortable for some. 
+
+::: {.fragment}
+The ubiquitous heterogeneity and nonlinearity may imply that any conclusions regarding the mobility can be subjective and sensitive to the varying parameter. However, some of the **qualitative** conclusions do not have to be. 
+
+:::
+
+::: {.fragment}
+
+It is important to see what consensus may arise from this kind of analysis. When no uniform conclusions can be reached, our paper points out the need to explicate the commitment to certain policy goals when measuring mobility. 
+
+For example, many may agree that the measurement of mobility should reflect our care for the poor, and that monitoring the changes or policy effectiveness should place more weights on the children from more disadvantaged families. Only when such qualifying statements are made can our policy discussions be more meaningful and fruitful.
+:::
+
+
+---
+
+![](figures/model5.png){fig-align="center"}
+
+
+## Conclusions
+
+1. We discuss a new and challenging issue in measuring mobility, especially in the presence of heterogeneity and the context of group comparisons.
+
+2. We derive the (lackof) justification of the underlying aggregation function for dominant approaches in practice
+
+3. We propose two different classes of decision-theoretic measures of mobility, both are rather easy to compute in practice using any statistical softwares.
+
+4. Using our results, we indeed find the results are sensitive to the changes in the weighting functions and the parameters of the welfare functions.
+
+# Appendix
+
+## A Less Elegant Solution {#slide-sen}
+
+One may be tempted to estimate the entire non parametric function $g(x)$, as well as $g^{\prime}(x)$ first and then impose a particular weighting scheme. This is, however, theoretically and computationally unappealing.
+
+1. The nonparametric function estimates have a very slow rate of convergence, and the derivatives are even slower.
+2. Performances are sensitive to the choice of regularization like kernel and bandwidth choice.
+3. computationally involved and can be impractical at moderate sample sizes and imprecise with small samples such as the panel data like PSID
+
+
+
+A **parallel** literature: Callaway and Sant’Anna (2021), Difference-in-Differences with Multiple Time Periods, *J of Econometrics*
+
+[back](#slide-sol)
+
+## Average Method
+
+We can do that, but why?
+
+Amartya Sen (1995): Inequality Reexamined
+
+> egalitarianism, the effect of ignoring the interpersonal variations can, in fact, be deeply inegalitarian, in hiding the fact that equal consideration for all may demand very unequal treatment in favor of a particular group. The demands of substantive equality can be particularly exacting and complex when there is a good deal of antecedent inequality to counter.
+
+Such methods are not necessarily consistent with typical social welfare functions, where we often care more about children from disadvantaged families. 
+
+In the presence of heterogeneity, we often bring different approaches to summarize the distribution and never focus on the mean income. This is evident when we are thinking about the [**The Great Gatsby Curve**]{.blue}. 
+
+[back](#slide-sol)
+
+## Proof {#slide-proof}
+
+**Proof** Numerator can be rewritten as 
+
+$$
+\begin{aligned}
+\operatorname{Cov}\left(Y, P^{\prime}\left(F_X(X)\right)\right) & =\mathbb{E}\left\{[Y-\mathbb{E}(Y)]\left[P^{\prime}\left(F_X(X)\right)-\mathbb{E}\left(P^{\prime}\left(F_X(X)\right)\right)\right]\right\} \\
+& =\mathbb{E}_X\left\{[\mathbb{E}(Y \mid X)-\mathbb{E}(Y)]\left[P^{\prime}\left(F_X(X)\right)-\mathbb{E}\left(P^{\prime}\left(F_X(X)\right)\right)\right]\right\} \\
+& =\mathbb{E}_X\left\{[\mathbb{E}(Y \mid X)-\mathbb{E}(Y)] P^{\prime}\left(F_X(X)\right)\right\} \\
+& =\int_{\mathcal{S}_X} \widetilde{y}_x d P\left(F_X(x)\right)=\widetilde{W}_Y
+\end{aligned}
+$$
+
+where $\widetilde{y}_x=\mathbb{E}(Y \mid X=x)-\mathbb{E}(Y)$ is the normalized conditional expected children income given parents income $X=x$, and the second equality follows the law of iterated expectations. 
+
+[Back](#slide-ours)
+
+
+## Social Welfare Functions and Corresponding Measures of (Im)Mobility
+
+We consider the weighting schemes based on the commonly used social welfare functions:
+
+**Class 1: Gini Function** 
+$$P_{k}^{I}(p)=1-(1-p)^{k} \text { for } p \in[0,1]$$
+where $k>1$ is the inequality aversion parameter. The higher $k$, the more inequality averse the society and more weights $\left(d P_{k}^{I}(p) / d p\right)$ placed on the poor.
+
+
+
+**Class 2: Lorenz Function**
+$$
+\begin{aligned}
+&P_{v}^{II}(p)=\left(v p-p^{v}\right)(v-1)^{-1} \text { for } p \in[0,1], v>0, \text { and } v \neq 1 \\
+&P_{1}^{II}(p)= \begin{cases}p(1-\log p) & \text { if } 0<p \leq 1 \\
+0 & \text { if } p=0\end{cases}
+\end{aligned}
+$$
+
+
+
+## Class 1: Gini-based Mobility Measures
+
+[Preference Function]{.blue}
+$$
+P_{k}^{I}(p)=1-(1-p)^{k} \text { for } p \in[0,1]
+$$
+
+[(Im)Mobility Measure]{.blue}
+
+$$s^{I}(k)=\frac{\operatorname{Cov}\left(Y,\color{red}{\left[1-F_{X}(X)\right]^{k-1}}\right)}{\operatorname{Cov}\left(X,\color{red}{\left[1-F_{X}(X)\right]^{k-1}}\right)}$$
+
+where $\color{red}{\left[1-F_{X}(X)\right]^{k-1}}$ is proportional to $\frac{d}{du} P_{\kappa}^{I}(u) =\kappa(1-u)^{\kappa-1}$ the preference derivative, the weight placed on a particular income. 
+
+## Class 2: Lorenz-based Mobility Measures
+
+[Preference Function]{.blue}
+
+$$
+\begin{aligned}
+&P_{v}^{II}(p)=\left(v p-p^{v}\right)(v-1)^{-1} \text { for } p \in[0,1], v>0, \text { and } v \neq 1 \\
+&P_{1}^{II}(p)= \begin{cases}p(1-\log p) & \text { if } 0<p \leq 1 \\
+0 & \text { if } p=0\end{cases}
+\end{aligned}
+$$
+[(Im)Mobility Measure]{.blue}
+
+$$s^{II}(v)=\frac{\operatorname{Cov}\left(Y, \color{red}{1-F_{X}(X)^{v-1}}\right)}{\operatorname{Cov}\left(X, \color{red}{1-F_{X}(X)^{v-1}}\right)}$$
+
+where $1-F_{X}(X)^{v-1}$ is proportional to the preference derivative, $\nu\left(1-u^{\nu-1}\right)(\nu-1)^{-1}$.
+
+
+## Analysis of Weighting Schemes and Extension to Control for Covariates and Decomposition
+
+
+
+## Class 1: Weighting Scheme
+What are weighting schemes behind these decision-theoretic mobility measures?
+
+$$s^{\prime}(k)=\int_{\mathcal{S}_{X}} w_{k}^{\prime}(x) g^{\prime}(x) d x$$
+where $w_{k}^{\prime}(x)>0, \int_{\mathcal{S}_{x}} w_{k}^{\prime}(x) d x=1$
+$$
+\begin{aligned}
+w_{k}^{\prime}(x) &=\frac{\left[1-F_{X}(x)\right]-\left[1-F_{X}(x)\right]^{k}}{\int_{\mathcal{S}_{X}}\left\{\left[1-F_{X}(t)\right]-\left[1-F_{X}(t)\right]^{k}\right\} d t} \\
+&=c^{\prime}(k)\left[(1-p)-(1-p)^{k}\right]
+\end{aligned}
+$$
+
+---
+[Class 1: Weighting function with varying]{.blue} $\kappa$
+
+![](https://cdn.mathpix.com/snip/images/epNNeRDJERWUq0YOgJmZNEXPnFnpe8ieXTN6m0N9ABg.original.fullsize.png)
+
+
+#### Turning point $p^{\prime}(k)$ (maximum weight) decreases as  $k$ increases
+
+![](https://cdn.mathpix.com/snip/images/xJgAzBXoItMTaNP5S0BklP6tlK2Cb3h8wvOJD6MbNkw.original.fullsize.png)
+
+
+## Class 1 (Gini-based): Properties of Weighting Functions
+
+**Proposition:** Class 1: Gini-based Mobility Measures We obtain the following properties:
+
+1. $p^{I}(k)$ (.blue[**maximum weight**] the peak or turning point) is strictly decreasing in $k$ for $k>1$.
+2. $\lim _{k \rightarrow \infty} p^{I}(k) \rightarrow 0$.
+3. For a sufficiently large $k, w_{k}^{I}(p) \approx c^{\prime}(k)(1-p)$ for almost $p$ (.blue[**monotonically decreasing weights**]).
+
+## Class 2: Weighting Scheme
+
+$$s^{II}(v)=\int_{\mathcal{S}_{X}} w_{v}^{\prime \prime}(x) g^{\prime}(x) d x$$
+where $w_{v}^{II}(x)>0, \int_{\mathcal{S}_{x}} w_{v}^{II}(x) d x=1$
+
+$$w_{v}^{II}(x)=\frac{F_{X}(x)-F_{X}(x)^{v}}{\int_{\mathcal{S}_{X}}\left[F_{X}(t)-F_{X}(t)^{v}\right] d t}$$
+
+
+## [Class 2: Weighting function with varying]{.white} $\nu$ (0,1)
+
+![](https://cdn.mathpix.com/snip/images/OIFokBC323uoeGM77sx3J1V9VJ_zWOi7YXhzvx6ilt4.original.fullsize.png)
+
+
+## [Class 2: Weighting function with varying]{.white} $\nu>1$
+
+
+![](https://cdn.mathpix.com/snip/images/ozSx8tZo5QboIYCJ1ITYLgcN_E3QbldAQ2ZwTP6nGJg.original.fullsize.png)
+
+
+
+## Class 2 (Lorenz-based): Properties of Weighting Functions
+
+**Proposition:** Class 2 Mobility Measures We obtain the following properties:
+1. $p^{II}(v)$ (.blue[**maximum weight**]) is strictly increasing in $v$ for $v>0$.
+2. $\lim _{v \rightarrow 0} p^{II}(v) \rightarrow 0$ and $\lim _{v \rightarrow \infty} p^{II}(v) \rightarrow 1$.
+3. For a sufficiently small $v, w_{v}^{\prime \prime}(p) \approx c^{\prime \prime}(v)(p-1)$ for almost $p$; (.red[**monotonically decreasing weights**]) for a sufficiently large $v, w_{v}^{II}(p) \approx c^{II}(v) p$ for almost $p$ (.red[**monotonically increasing weights**]).
+4. For $v=1$, the turning point is $p^{II}(1)=e^{-1}=0.368$.
+
+
+## **Maximum Weight**
+![](https://cdn.mathpix.com/snip/images/5RgK4_mRZg7wC2z7P3l4Y_5meuiNnTojJPsWzIbE-rw.original.fullsize.png)
+
+

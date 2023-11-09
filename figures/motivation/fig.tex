@@ -1,0 +1,215 @@
+\documentclass[a4paper,landscape]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\usepackage{amsmath} % for bmatrix
+\usepackage{xcolor} % For \colorbox
+
+
+
+\usepackage[most,boxfit]{tcolorbox}
+
+
+
+
+% Define the new environment with a red background
+\newcommand{\highlightmath}[1]{
+  \tcbhighmath[fit to=auto, fuzzy halo=1mm with blue!50!white, arc=2pt,
+  boxrule=0pt, frame hidden]{#1}
+}
+
+\usetikzlibrary{calc}
+\usepackage{relsize}
+\usetikzlibrary{positioning}
+
+\usepackage{fontspec}
+\setmainfont{Dosis}
+
+\setlength{\topmargin}{-.65in} \setlength{\oddsidemargin}{-.5in} \setlength{\evensidemargin}{.0in}
+\setlength{\textwidth}{8.5in} \setlength{\textheight}{9in}
+
+\tikzset{fontscale/.style = {font=\relsize{#1}}
+    }
+
+\tikzstyle{header} = [rectangle, rounded corners, minimum width=6cm, minimum height=2cm, text centered, draw=black, fill=green!20]
+
+\tikzstyle{body} = [rectangle, rounded corners, minimum width=6cm, minimum height=11cm, draw=black, text width = 6cm, fill=blue!5]
+
+\begin{document}
+
+\begin{tikzpicture}[align=center, node distance={7cm}]
+
+\node[font = {\Large\bfseries}, blue] (header1) [header] {Outcome A};
+\node[font = {\bfseries}, black, below of=header1] (body1) [body] {1. Yes, 2. No};
+
+
+\node[font = {\Large\bfseries}, red, right of=header1] (header2) [header] {Outcome B};
+\node[font = {\bfseries}, black, right of=body1] (body2) [body] {Text dafdfdf dfdfdf };
+
+\node[font = {\Large\bfseries}, gray, right of=header2] (header3) [header] {Outcome C};
+\node[font = {\bfseries}, black, right of=body2] (body3) [body] {Text };
+
+\node[font = {\Large\bfseries}, black, right of=header3] (header4) [header] {Outcome D};
+\node[font = {\bfseries}, black, right of=body3] (body4) [body] {Text};
+
+
+\end{tikzpicture}
+
+\clearpage
+
+\begin{tikzpicture}[align=center]
+
+\node[font = {\Large\bfseries}, blue] (header1) [header] {Outcome A};
+\node[font = {\bfseries}, black, below of=header1] (body1) [body] {Text dfdfd Text dfdfd Text dfdfd Text dfdfd Text dfdfd};
+
+
+\node[font = {\Large\bfseries}, red, right of=header1] (header2) [header] {Outcome B};
+\node[font = {\bfseries}, black, right of=body1] (body2) [body] {Text dafdfdf dfdfdf };
+
+\node[font = {\Large\bfseries}, gray, right of=header2] (header3) [header] {Outcome C};
+\node[font = {\bfseries}, black, right of=body2] (body3) [body] {Text };
+
+https://www.overleaf.com/project/62d5d9f3ee86d71c80dc1896
+
+\end{tikzpicture}
+
+\newpage
+
+\begin{tikzpicture}[align=center]
+
+\path (20,3) rectangle (28,-3);
+
+\path (28.2,0) -- (32.8,0);
+
+% Draw the rectangle for Model
+\draw[line width=2pt, rounded corners=5pt, fill=black] (33,3) rectangle (41,-3);
+\node[scale=4] at (37,0) {\textcolor{white}{Model}};
+
+% Arrows and labels
+
+\draw[->,line width=2pt] (41.2,0) -- (45,0);
+\node[anchor=east, scale=3] at (46.5,0) {$\beta$};
+
+% Optional: Add any other details or customizations as needed.
+
+\end{tikzpicture}
+
+\newpage
+
+\begin{tikzpicture}[align=center]
+
+\draw[line width=2pt, rounded corners=5pt, fill=blue!5] (20,3) rectangle (28,-3) ;
+\node[scale=2] at (24,0) {$g(x) \rightarrow \begin{bmatrix}
+g'(x_1) \\
+g'(x_2) \\
+\vdots \\
+g'(x_i) \\
+\vdots
+\end{bmatrix} $};
+
+\draw[->,line width=2pt] (28.2,0) -- (32.8,0);
+
+% Draw the rectangle for Model
+\draw[line width=2pt, rounded corners=5pt, fill=black] (33,3) rectangle (41,-3);
+\node[scale=4] at (37,0) {\textcolor{white}{Model}};
+
+% Arrows and labels
+
+\draw[->,line width=2pt] (41.2,0) -- (45,0);
+\node[anchor=east, scale=3] at (46.5,0) {$\beta$};
+
+% Optional: Add any other details or customizations as needed.
+
+\end{tikzpicture}
+
+
+\newpage
+
+\begin{tikzpicture}[align=center]
+
+\draw[line width=2pt, rounded corners=5pt, fill=blue!5] (20,3) rectangle (28,-3) ;
+\node[scale=2] at (24,0) { $g(x) \rightarrow \begin{bmatrix}
+g'(x_1) \\
+g'(x_2) \\
+\vdots \\
+g'(x_i) \\
+\vdots
+\end{bmatrix} $};
+
+\draw[->,line width=2pt] (28.2,0) -- (32.8,0);
+
+% Draw the rectangle for Model
+\draw[line width=2pt, rounded corners=5pt, fill=black] (33,3) rectangle (41,-3);
+\node[scale=4] at (37,0) {\textcolor{white}{Summary}};
+
+% Arrows and labels
+
+\draw[->,line width=2pt] (41.2,0) -- (45,0);
+\node[anchor=east, scale=3] at (46.5,0) {$\beta$};
+
+% Optional: Add any other details or customizations as needed.
+
+\end{tikzpicture}
+
+\newpage
+
+\begin{tikzpicture}[align=center]
+
+\draw[line width=2pt, rounded corners=5pt, fill=blue!5] (20,3) rectangle (28,-3) ;
+\node[scale=2] at (24,0) {$g(x) \rightarrow \begin{bmatrix}
+g'(x_1) \\
+g'(x_2) \\
+\vdots \\
+g'(x_i) \\
+\vdots
+\end{bmatrix} $};
+
+\draw[->,line width=2pt] (28.2,0) -- (32.8,0);
+
+% Draw the rectangle for Model
+\draw[line width=2pt, rounded corners=5pt, fill=green!20] (33,3) rectangle (41,-3);
+\node[scale=2] at (37,0) {Model  \\ \vspace{.005cm} \\ $\int w(x) g^{\prime}(x) d x$ };
+
+% Arrows and labels
+
+\draw[->,line width=2pt] (41.2,0) -- (45,0);
+\node[anchor=east, scale=3] at (46.5,0) {$\beta$};
+
+% Optional: Add any other details or customizations as needed.
+
+\end{tikzpicture}
+
+
+\newpage
+
+\begin{tikzpicture}[align=center]
+
+\draw[line width=2pt, rounded corners=5pt, fill=blue!5] (20,3) rectangle (28,-3) ;
+\node[scale=2] at (24,0) {$g(x) \rightarrow \begin{bmatrix}
+g'(x_1) \\
+g'(x_2) \\
+\vdots \\
+g'(x_i) \\
+\vdots
+\end{bmatrix} $};
+
+\draw[->,line width=2pt] (28.2,0) -- (32.8,0);
+
+% Draw the rectangle for Model
+\draw[line width=2pt, rounded corners=5pt, fill=green!20] (33,3) rectangle (41,-3);
+\node[scale=2] at (37,0) {Model  \\ \vspace{.005cm} \\ $\int w(x) g^{\prime}(x) d x$ };
+
+% Arrows and labels
+
+\draw[->,line width=2pt] (41.2,0) -- (45,0);
+\node[anchor=east, scale=3] at (46.5,0) {$\beta$};
+
+
+\draw[line width=2pt, rounded corners=5pt, fill=yellow!20] (33,-8) rectangle (41,-14);
+\node[scale=2] at (37,-11) {Social  Preference  \\ \vspace{.005cm} \\ $P(\cdot)$ };
+\draw[->,line width=2pt] (37,-7.8) -- (37,-3.1);
+
+\end{tikzpicture}
+
+
+\end{document}
